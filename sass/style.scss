@@ -1,0 +1,20 @@
+$container-background: #eee;
+.instance {
+    display: inline-block;
+    padding: 1em;
+    background: $container-background;
+    margin: 1em;
+}
+.stock {
+    button {
+        margin-right: 1em;
+        padding: 0.5em;
+    }
+}
+#ticker {
+    background: $container-background;
+    padding: 1em;
+    span {
+        padding: 0.25em;
+    }
+}
