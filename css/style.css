@@ -1,0 +1,17 @@
+.instance {
+  display: inline-block;
+  padding: 1em;
+  background: #eee;
+  margin: 1em;
+}
+.stock button {
+    margin-right: 1em;
+    padding: 0.5em;
+}
+#ticker {
+    background: #eee;
+    padding: 1em;
+}
+#ticker span {
+    padding: 0.25em;
+}
