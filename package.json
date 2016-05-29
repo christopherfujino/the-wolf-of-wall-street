@@ -4,7 +4,7 @@
   "description": "Stock trading game utilizing sBind module",
   "main": "app.js",
   "scripts": {
-    "build": "babel app.js.es6 -o app.js"
+    "build": "babel es6 -d es5"
   },
   "author": "",
   "license": "ISC",
