@@ -54,7 +54,7 @@ class Stock {
     };
 
     // price changes
-    this.interval = window.setInterval(function(context) {
+    privateProperties.interval = window.setInterval(function(context) {
       if (context.get('value') > 0 &&
           Math.random() * 10 + 1 < context.get('volatility')) {
         let sign = 1;     // positive or negative change?
@@ -65,14 +65,14 @@ class Stock {
         let newValue = context.get('value') + delta * sign;
         if (newValue <= 0) {
           newValue = 0;
-          window.clearInterval(context.interval);
+          window.clearInterval(context.get('interval'));
           callback(this);
         }
         context.set('value', newValue);
         context.get('ticker').post('Value of ' + context.get('name') +
                                    ' changed by $' + delta * sign);
       }
-    }, 2500, this);
+    }, 1500, this);
   }
 
   transaction(trader, count) {
