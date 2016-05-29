@@ -131,19 +131,6 @@ class Stock {
         })
 
                     );
-    /*
-      .append($('<button>')
-        .text('Sell!')
-        .click({
-          stock: this,
-          trader: this.get('trader'),
-          count: -1
-        }, function(e) {
-          if (e.data.stock.transaction(e.data.trader, e.data.count) === false) {
-            console.log('Sale failed!');
-          }
-        })
-      ); */
   }
 }
 
