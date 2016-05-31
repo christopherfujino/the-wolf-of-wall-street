@@ -7,6 +7,13 @@
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="sBind/es5/sbind.js"></script>
+    <script type="text/javascript">
+      if(!sBind) {
+        console.log('local sBind not found, loading from github...');
+        document.write('<script src="https://raw.githubusercontent.com/christopherfujino/sBind/master/es5/sbind.js"><\/script>');
+      }
+      else { console.log('loading local sBind.js successful'); }
+    </script>
     <script src="es5/app.js"></script>
   </body>
 </html>
