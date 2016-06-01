@@ -118,6 +118,7 @@ class Stock {
                        }))
         .append(sBind.bind({
           type : 'input',
+          key : 'buy',
           eventData : {stock : this, trader : this.get('trader'), count : -1},
           reference : this,
           $object : $('<button>').text('Sell!'),
