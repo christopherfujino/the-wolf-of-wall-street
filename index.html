@@ -8,9 +8,9 @@
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="sBind/es5/sbind.js"></script>
     <script type="text/javascript">
-      if(!sBind) {
+      if(typeof sBind !== 'object') {
         console.log('local sBind not found, loading from github...');
-        document.write('<script src="https://raw.githubusercontent.com/christopherfujino/sBind/master/es5/sbind.js"><\/script>');
+        document.write('<script type="text/javascript" src="https://raw.githubusercontent.com/christopherfujino/sBind/master/es5/sbind.js"><\/script>');
       }
       else { console.log('loading local sBind.js successful'); }
     </script>
