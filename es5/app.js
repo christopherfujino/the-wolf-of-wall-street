@@ -123,14 +123,21 @@ var Stock = function () {
   }, {
     key: 'get$',
     value: function get$() {
-      return $('<div>').addClass('instance stock').append($('<div>').text('Name: ').append(sBind.bind({ reference: this, key: 'name' }))).append($('<div>').text('Value: $').append(sBind.bind({ reference: this, key: 'value' }))).append($('<div>').text('Volatility: ').append(sBind.bind({ reference: this, key: 'volatility' }))).append($('<div>').text('Shares owned: ').append(sBind.bind({ reference: this, key: 'owned' }))).append($('<button>').text('Buy!').click({ stock: this, trader: this.get('trader'), count: 1 }, function (e) {
-        if (e.data.stock.transaction(e.data.trader, e.data.count) === false) {
-          // check if purchase failed
-          console.log('Purchase failed!');
+      return $('<div>').addClass('instance stock').append($('<div>').text('Name: ').append(sBind.bind({ reference: this, key: 'name' }))).append($('<div>').text('Value: $').append(sBind.bind({ reference: this, key: 'value' }))).append($('<div>').text('Volatility: ').append(sBind.bind({ reference: this, key: 'volatility' }))).append($('<div>').text('Shares owned: ').append(sBind.bind({ reference: this, key: 'owned' }))).append(sBind.bind({
+        type: 'input',
+        key: 'buy',
+        eventData: { stock: this, trader: this.get('trader'), count: 1 },
+        reference: this,
+        $object: $('<button>').text('Buy!'),
+        typeOfEvent: 'click',
+        callback: function callback(e) {
+          if (e.data.stock.transaction(e.data.trader, e.data.count) === false) {
+            console.log('purchase failed!');
+          }
         }
       })).append(sBind.bind({
         type: 'input',
-        key: 'buy',
+        key: 'sell',
         eventData: { stock: this, trader: this.get('trader'), count: -1 },
         reference: this,
         $object: $('<button>').text('Sell!'),
