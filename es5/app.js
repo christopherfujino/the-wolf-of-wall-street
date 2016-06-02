@@ -127,7 +127,6 @@ var Stock = function () {
         type: 'input',
         key: 'buy',
         eventData: { stock: this, trader: this.get('trader'), count: 1 },
-        reference: this,
         $object: $('<button>').text('Buy!'),
         typeOfEvent: 'click',
         callback: function callback(e) {
@@ -139,7 +138,6 @@ var Stock = function () {
         type: 'input',
         key: 'sell',
         eventData: { stock: this, trader: this.get('trader'), count: -1 },
-        reference: this,
         $object: $('<button>').text('Sell!'),
         typeOfEvent: 'click',
         callback: function callback(e) {
