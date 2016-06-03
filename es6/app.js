@@ -115,40 +115,11 @@ class Stock {
               }
             },
             {stock : this, trader : this.get('trader'), count : 1}))
-        /*        .append(sBind.bind({
-                  type : 'input',
-                  key : 'buy',
-                  eventData : {stock : this, trader : this.get('trader'), count
-           : 1},
-                  $object : $('<button>').text('Buy!'),
-                  typeOfEvent : 'click',
-                  callback : (e) => {
-                    if (e.data.stock.transaction(e.data.trader, e.data.count)
-           ===
-                        false) {
-                      console.log('purchase failed!');
-                    }
-                  }
-                })) */
         .append(sBind.bindInput($('<button>').text('Sell!'), 'click', (e) => {
           if (e.data.stock.transaction(e.data.trader, e.data.count) === false) {
             console.log('Sale failed!');
           }
         }, {stock : this, trader : this.get('trader'), count : -1}));
-    /*        .append(sBind.bind({
-              type : 'input',
-              key : 'sell',
-              eventData : {stock : this, trader : this.get('trader'), count :
-       -1},
-              $object : $('<button>').text('Sell!'),
-              typeOfEvent : 'click',
-              callback : (e) => {
-                if (e.data.stock.transaction(e.data.trader, e.data.count) ===
-                    false) {
-                  console.log('Sale failed!');
-                }
-              }
-            }));*/
   }
 }
 
