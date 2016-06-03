@@ -28,10 +28,11 @@ class Trader {
   get$() {
     return $('<div>')
         .addClass('instance trader')
-        .append($('<div>').text('Name: ').append(
-            sBind.bind({reference : this, key : 'name'})))
-        .append($('<div>').text('Cash: $').append(
-            sBind.bind({reference : this, key : 'cash'})));
+
+        .append(
+            $('<div>').text('Name: ').append(sBind.bindOutput(this, 'name')))
+        .append(
+            $('<div>').text('Cash: $').append(sBind.bindOutput(this, 'cash')));
   }
 }
 
@@ -95,42 +96,59 @@ class Stock {
     return $('<div>')
         .addClass('instance stock')
         .append($('<div>').text('Name: ').append(
-            sBind.bind({reference : this, key : 'name'})))
-        .append($('<div>')
-                    .text('Value: $')
-                    .append(sBind.bind({reference : this, key : 'value'})))
+            //            sBind.bind({reference : this, key : 'name'})))
+            sBind.bindOutput(this, 'name')))
+        .append(
+            $('<div>').text('Value: $').append(sBind.bindOutput(this, 'value')))
         .append($('<div>')
                     .text('Volatility: ')
-                    .append(sBind.bind({reference : this, key : 'volatility'})))
+                    .append(sBind.bindOutput(this, 'volatility')))
         .append($('<div>')
                     .text('Shares owned: ')
-                    .append(sBind.bind({reference : this, key : 'owned'})))
-        .append(sBind.bind({
-          type : 'input',
-          key : 'buy',
-          eventData : {stock : this, trader : this.get('trader'), count : 1},
-          $object : $('<button>').text('Buy!'),
-          typeOfEvent : 'click',
-          callback : (e) => {
-            if (e.data.stock.transaction(e.data.trader, e.data.count) ===
-                false) {
-              console.log('purchase failed!');
-            }
+                    .append(sBind.bindOutput(this, 'owned')))
+        .append(sBind.bindInput(
+            $('<button>').text('Buy!'), 'click',
+            (e) => {
+              if (e.data.stock.transaction(e.data.trader, e.data.count) ===
+                  false) {
+                console.log('purchase failed!');
+              }
+            },
+            {stock : this, trader : this.get('trader'), count : 1}))
+        /*        .append(sBind.bind({
+                  type : 'input',
+                  key : 'buy',
+                  eventData : {stock : this, trader : this.get('trader'), count
+           : 1},
+                  $object : $('<button>').text('Buy!'),
+                  typeOfEvent : 'click',
+                  callback : (e) => {
+                    if (e.data.stock.transaction(e.data.trader, e.data.count)
+           ===
+                        false) {
+                      console.log('purchase failed!');
+                    }
+                  }
+                })) */
+        .append(sBind.bindInput($('<button>').text('Sell!'), 'click', (e) => {
+          if (e.data.stock.transaction(e.data.trader, e.data.count) === false) {
+            console.log('Sale failed!');
           }
-        }))
-        .append(sBind.bind({
-          type : 'input',
-          key : 'sell',
-          eventData : {stock : this, trader : this.get('trader'), count : -1},
-          $object : $('<button>').text('Sell!'),
-          typeOfEvent : 'click',
-          callback : (e) => {
-            if (e.data.stock.transaction(e.data.trader, e.data.count) ===
-                false) {
-              console.log('Sale failed!');
-            }
-          }
-        }));
+        }, {stock : this, trader : this.get('trader'), count : -1}));
+    /*        .append(sBind.bind({
+              type : 'input',
+              key : 'sell',
+              eventData : {stock : this, trader : this.get('trader'), count :
+       -1},
+              $object : $('<button>').text('Sell!'),
+              typeOfEvent : 'click',
+              callback : (e) => {
+                if (e.data.stock.transaction(e.data.trader, e.data.count) ===
+                    false) {
+                  console.log('Sale failed!');
+                }
+              }
+            }));*/
   }
 }
 
