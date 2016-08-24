@@ -1,0 +1,3 @@
+[submodule "sBind"]
+	path = sBind
+	url = https://github.com/christopherfujino/sBind.git
